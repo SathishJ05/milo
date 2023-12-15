@@ -28,7 +28,7 @@ public class MethodExample implements ClientExample {
     public static void main(String[] args) throws Exception {
         MethodExample example = new MethodExample();
 
-        new ClientExampleRunner(example).run();
+        new ClientExampleRunner(example,false).run();
     }
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

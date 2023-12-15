@@ -26,6 +26,10 @@ public interface ClientExample {
         return "opc.tcp://localhost:12686/milo";
     }
 
+    /*default String getEndpointUrl() {
+        return "opc.tcp://milo.digitalpetri.com:62541/milo";
+    }*/
+
     default Predicate<EndpointDescription> endpointFilter() {
         return e -> getSecurityPolicy().getUri().equals(e.getSecurityPolicyUri());
     }
@@ -33,6 +37,10 @@ public interface ClientExample {
     default SecurityPolicy getSecurityPolicy() {
         return SecurityPolicy.Basic256Sha256;
     }
+
+    /*default SecurityPolicy getSecurityPolicy() {
+        return SecurityPolicy.None;
+    }*/
 
     default IdentityProvider getIdentityProvider() {
         return new AnonymousProvider();

@@ -27,7 +27,7 @@ public class WriteExample implements ClientExample {
     public static void main(String[] args) throws Exception {
         WriteExample example = new WriteExample();
 
-        new ClientExampleRunner(example).run();
+        new ClientExampleRunner(example,true).run();
     }
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

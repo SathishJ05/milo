@@ -84,6 +84,8 @@ public class ClientExampleRunner {
         DefaultClientCertificateValidator certificateValidator =
             new DefaultClientCertificateValidator(trustListManager);
 
+        LoggerFactory.getLogger(getClass()).info("endpointUrl: {}", clientExample.getEndpointUrl());
+
         return OpcUaClient.create(
             clientExample.getEndpointUrl(),
             endpoints ->
@@ -99,7 +101,7 @@ public class ClientExampleRunner {
                     .setCertificateChain(loader.getClientCertificateChain())
                     .setCertificateValidator(certificateValidator)
                     .setIdentityProvider(clientExample.getIdentityProvider())
-                    .setRequestTimeout(uint(5000))
+                    .setRequestTimeout(uint(30000))
                     .build()
         );
     }
@@ -134,6 +136,7 @@ public class ClientExampleRunner {
                 }
 
                 try {
+                    Thread.sleep(20000);
                     client.disconnect().get();
                     if (serverRequired && exampleServer != null) {
                         exampleServer.shutdown().get();
